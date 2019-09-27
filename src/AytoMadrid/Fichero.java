@@ -7,10 +7,14 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Fichero {
+
 	Scanner in;
-	ArrayList<String> datos;
+	Dato dato;
+	ArrayList<Dato> datos;
+	ArrayList<String> horasDeMuestreo;
 	String puntoDeMuestreo;
 	String contaminante;
+	String fecha;
 	String horas;
 
 	public Fichero() {
@@ -22,16 +26,30 @@ public class Fichero {
 			FileReader fr = new FileReader("./horario.csv");
 			BufferedReader br = new BufferedReader(fr);
 			String lineaRuta = br.readLine();
-			datos = new ArrayList<String>();
+			datos = new ArrayList<Dato>();
+			horasDeMuestreo = new ArrayList<String>();
+			int counter = 0;
 			while (lineaRuta != null) {
 				String horarioAire[] = lineaRuta.split(";");
+				counter = 8;
 				puntoDeMuestreo = horarioAire[4].substring(0, 8);
-				datos.add(puntoDeMuestreo);
+				contaminante = horarioAire[3];
+				fecha = horarioAire[7] + "/" + horarioAire[6] + "/" + horarioAire[5];
+
+				if (horarioAire.length >= 8 && horarioAire.length % 2 == 0) {
+					horasDeMuestreo.add(horarioAire[counter]);
+				}
+
+				dato = new Dato(contaminante, puntoDeMuestreo, fecha);
+				datos.add(dato);
+				counter++;
 				lineaRuta = br.readLine();
+
 			}
-			for (String string : datos) {
-				System.out.println(string);
+			for (Dato dato : datos) {
+				System.out.println(dato);
 			}
+
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

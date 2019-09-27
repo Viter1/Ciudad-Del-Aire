@@ -4,6 +4,8 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class Contaminante {
+	
+	
 
 	public void punto_de_muestreo(Map<Integer, String> pdm) {
 		pdm.put(28079035, "Pza. del Carmen");
@@ -49,8 +51,6 @@ public class Contaminante {
 		conta.put("42" , "Hidrocarburos totales (hexano)");
 		conta.put("43" , "Metano");
 		conta.put("44" , "Hidrocarburos no metánicos (hexano)");
-		
-
 	}
 
 }
