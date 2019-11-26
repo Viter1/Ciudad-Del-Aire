@@ -14,9 +14,7 @@ public class Main {
 
 		contaminante.punto_de_muestreo(punto_de_muestreo);
 		contaminante.contaminant(contaminantes);
-		
-		fichero.leerFichero();
-
+		fichero.leerFichero();	
 	}
 
 }
